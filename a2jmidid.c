@@ -66,6 +66,7 @@ static bool g_started = false;
 struct a2j * g_a2j = NULL;
 size_t g_max_jack_port_name_size;
 bool g_disable_port_uniqueness = false;
+bool g_filter_note_on = true;
 
 bool g_a2j_export_hw_ports = false;
 char * g_a2j_jack_server_name = "default";
@@ -427,7 +428,7 @@ void
 a2j_help(
   const char * self)
 {
-  a2j_info("Usage: %s [-j jack-server] [-e | --export-hw] [-u]", self);
+  a2j_info("Usage: %s [-j jack-server] [-e | --export-hw] [-u] [-n]", self);
   a2j_info("Defaults:");
   a2j_info("-j default");
 }
@@ -484,6 +485,9 @@ main(
         break;
       case 'u':
         g_disable_port_uniqueness = true;
+        break;
+      case 'n':
+        g_filter_note_on = false;
         break;
       default:
         a2j_help(argv[0]);
