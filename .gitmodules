@@ -1,3 +1,6 @@
 [submodule "waf-autooptions"]
 	path = waf-autooptions
 	url = ../waf-autooptions
+[submodule "siginfo"]
+	path = siginfo
+	url = ../siginfo
