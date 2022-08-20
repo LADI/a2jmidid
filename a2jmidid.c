@@ -51,7 +51,7 @@
 #include "paths.h"
 #include "conf.h"
 #include "jack.h"
-#include "sigsegv.h"
+#include "../siginfo/siginfo.h"
 #include "gitversion.h"
 #include "dbus_iface_control.h"
 
@@ -516,7 +516,7 @@ main(
   /* setup our SIGSEGV magic that prints nice stack in our logfile */ 
   if (dbus)
   {
-    setup_sigsegv();
+    setup_siginfo();
   }
 
   signal(SIGINT, &a2j_sigint_handler);
