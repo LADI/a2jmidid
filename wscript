@@ -8,7 +8,7 @@ import subprocess
 #import shutil
 #import sys
 
-from waflib import Logs, Options, TaskGen
+from waflib import Logs, Options, TaskGen, Context
 from waflib.Build import BuildContext, CleanContext, InstallContext, UninstallContext
 
 import os
@@ -24,6 +24,34 @@ VERSION='8'
 # these variables are mandatory ('/' are converted automatically)
 srcdir = '.'
 blddir = 'build'
+
+def git_ver(self):
+    bld = self.generator.bld
+    header = self.outputs[0].abspath()
+    if os.access('./version.h', os.R_OK):
+        header = os.path.join(os.getcwd(), out, "version.h")
+        shutil.copy('./version.h', header)
+        data = open(header).read()
+        m = re.match(r'^#define GIT_VERSION "([^"]*)"$', data)
+        if m != None:
+            self.ver = m.group(1)
+            Logs.pprint('BLUE', "tarball from git revision " + self.ver)
+        else:
+            self.ver = "tarball"
+        return
+
+    if bld.srcnode.find_node('.git'):
+        self.ver = bld.cmd_and_log("LANG= git rev-parse HEAD", quiet=Context.BOTH).splitlines()[0]
+        if bld.cmd_and_log("LANG= git diff-index --name-only HEAD", quiet=Context.BOTH).splitlines():
+            self.ver += "-dirty"
+
+        Logs.pprint('BLUE', "git revision " + self.ver)
+    else:
+        self.ver = "unknown"
+
+    fi = open(header, 'w')
+    fi.write('#define GIT_VERSION "%s"\n' % self.ver)
+    fi.close()
 
 @TaskGen.feature('gitversion')
 def gitversion(self):
@@ -157,10 +185,10 @@ def configure(conf):
     print()
 
 def build(bld):
-    if not os.access('gitversion.h', os.R_OK):
-        bld(features='gitversion')
+#    if not os.access('gitversion.h', os.R_OK):
+#        bld(features='gitversion')
 #        create_gitversion_gen(bld)
-
+    bld(rule=git_ver, target='gitversion.h', update_outputs=True, always=True, ext_out=['.h'])
 #    obj = bld(features=['c', 'cprogram'])
 #    #obj.includes = sysdeps_dbus_include + ['.', '../', '../common', '../common/jack']
 #
