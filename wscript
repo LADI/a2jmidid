@@ -27,7 +27,8 @@ blddir = 'build'
 
 @TaskGen.feature('gitversion')
 def gitversion(self):
-    subprocess.run(["./gitversion_regenerate.sh", "build/gitversion.h"])
+    #subprocess.run(["./gitversion_regenerate.sh", "build/gitversion.h"])
+    subprocess.call(["./gitversion_regenerate.sh", "build/gitversion.h"])
 
 def create_gitversion_gen(bld, header='gitversion.h', define=None):
     cmd = '../gitversion_regenerate.sh ${TGT}'
