@@ -44,10 +44,10 @@ def display_msg(msg, status = None, color = None):
     global g_maxlen
     g_maxlen = max(g_maxlen, len(msg))
     if status:
-        print "%s :" % msg.ljust(g_maxlen),
+        print("%s :" % msg.ljust(g_maxlen), end=' ')
         Params.pprint(color, status)
     else:
-        print "%s" % msg.ljust(g_maxlen)
+        print("%s" % msg.ljust(g_maxlen))
 
 def set_options(opt):
     opt.tool_options('compiler_cc')
@@ -96,15 +96,15 @@ def configure(conf):
         if m != None:
             gitrev = m.group(1)
 
-    print
+    print()
     display_msg("==================")
     version_msg = "a2jmidid-" + VERSION
     if gitrev:
         version_msg += " exported from " + gitrev
     else:
         version_msg += " git revision will checked and eventually updated during build"
-    print version_msg
-    print
+    print(version_msg)
+    print()
 
     display_msg("Install prefix", conf.env['PREFIX'], 'CYAN')
     if conf.env['DBUS_ENABLED']:
@@ -115,18 +115,18 @@ def configure(conf):
     if conf.env['DBUS_ENABLED']:
         display_msg('D-Bus service install directory', conf.env['DBUS_SERVICES_DIR'], 'CYAN')
         if conf.env['DBUS_SERVICES_DIR'] != conf.env['DBUS-1_SESSION_BUS_SERVICES_DIR'][0]:
-            print
-            print Params.g_colors['RED'] + "WARNING: D-Bus session services directory as reported by pkg-config is"
-            print Params.g_colors['RED'] + "WARNING:",
-            print Params.g_colors['CYAN'] + conf.env['DBUS-1_SESSION_BUS_SERVICES_DIR'][0]
-            print Params.g_colors['RED'] + 'WARNING: but service file will be installed in'
-            print Params.g_colors['RED'] + "WARNING:",
-            print Params.g_colors['CYAN'] + conf.env['DBUS_SERVICES_DIR']
-            print Params.g_colors['RED'] + 'WARNING: You may need to adjust your D-Bus configuration after installing'
-            print 'WARNING: You can override dbus service install directory'
-            print 'WARNING: with --enable-pkg-config-dbus-service-dir option to this script'
-            print Params.g_colors['NORMAL'],
-    print
+            print()
+            print(Params.g_colors['RED'] + "WARNING: D-Bus session services directory as reported by pkg-config is")
+            print(Params.g_colors['RED'] + "WARNING:", end=' ')
+            print(Params.g_colors['CYAN'] + conf.env['DBUS-1_SESSION_BUS_SERVICES_DIR'][0])
+            print(Params.g_colors['RED'] + 'WARNING: but service file will be installed in')
+            print(Params.g_colors['RED'] + "WARNING:", end=' ')
+            print(Params.g_colors['CYAN'] + conf.env['DBUS_SERVICES_DIR'])
+            print(Params.g_colors['RED'] + 'WARNING: You may need to adjust your D-Bus configuration after installing')
+            print('WARNING: You can override dbus service install directory')
+            print('WARNING: with --enable-pkg-config-dbus-service-dir option to this script')
+            print(Params.g_colors['NORMAL'], end=' ')
+    print()
 
 def build(bld):
     if not os.access('gitversion.h', os.R_OK):
@@ -175,8 +175,8 @@ def build(bld):
         obj.inst_var = bld.env()['DBUS_SERVICES_DIR']
         obj.inst_dir = '/'
 
-        install_files('PREFIX', 'bin', 'a2j_control', chmod=0755)
-        install_files('PREFIX', 'bin', 'a2j', chmod=0755)
+        install_files('PREFIX', 'bin', 'a2j_control', chmod=0o755)
+        install_files('PREFIX', 'bin', 'a2j', chmod=0o755)
 
     # install man pages
     man_pages = [
