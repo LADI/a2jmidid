@@ -2,15 +2,13 @@
 Changelog
 =========
 
-Version 9 on 2019-09-24
+LADI Version 9 on 2022-08-28
 -----------------------
 
-* architecture fixes for aarch64 and powerpc64
-* porting a2j_control to python3
-* replace waf with meson as build system
-* control unique port names over D-Bus
+* port a2j_control to python3
+* add meson as possible build system
 * man page spelling fixes
-* fix linking against libpthread
+* control unique port names over D-Bus
 
 Version 8 "Sophronius of Vratsa" on 2012-07-05
 ----------------------------------------------
