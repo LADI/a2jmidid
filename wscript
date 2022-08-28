@@ -196,7 +196,7 @@ def build(bld):
         obj.source = 'org.gna.home.a2jmidid.service.in'
         obj.target = 'org.gna.home.a2jmidid.service'
         obj.install_path = '${DBUS_SERVICES_DIR}/'
-        obj.BINDIR = bld.env['PREFIX'] + '/bin'
+        obj.bindir = bld.env['PREFIX'] + '/bin'
 
         bld.install_as(
             os.path.join(bld.env['PREFIX'], 'bin', 'a2j_control'),
