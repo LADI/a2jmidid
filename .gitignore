@@ -1,4 +1,4 @@
 /TAGS
 /.waf*
-/.lock-wscript
+/.lock-*
 /build
