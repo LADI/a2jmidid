@@ -179,6 +179,7 @@ def build(bld):
     prog.use = ['ALSA', 'JACK', 'DL', 'PTHREAD']
     if bld.env['DBUS_ENABLED']:
         prog.use.append('DBUS-1')
+    prog.defines = ["HAVE_GITVERSION_H"]
 
     prog = bld(features=['c', 'cprogram'])
     prog.source = 'a2jmidi_bridge.c'
