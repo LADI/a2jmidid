@@ -12,7 +12,7 @@ from waflib import Logs, Options, TaskGen, Context, Utils
 from waflib.Build import BuildContext, CleanContext, InstallContext, UninstallContext
 
 APPNAME='a2jmidid'
-VERSION='8'
+VERSION='9'
 
 # these variables are mandatory ('/' are converted automatically)
 srcdir = '.'
