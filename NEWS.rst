@@ -2,6 +2,15 @@
 Changelog
 =========
 
+LADI Version 9.1 on 2023-05-04
+-----------------------
+* Allow bypass of the conversion of MIDI note on events with velocity 0
+  While these are invalid events and the conversion helps hearing them,
+  some MIDI hardware vendors do use them anyway.
+  The bypass is toggable via command a2jmidid line -n option.
+  The default is not changed. Kudos to Guido Aulisi
+  https://github.com/linuxaudio/a2jmidid/issues/14
+
 LADI Version 9 on 2022-08-28
 -----------------------
 
