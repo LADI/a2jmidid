@@ -59,22 +59,22 @@ daemon activates the object by executing the service executable.
 The object has methods for starting and stopping the
 bridging. You can use *a2j_control* to do this::
 
-  a2j_control --start
-  a2j_control --stop
+  a2j_control start
+  a2j_control stop
 
 You can deactivate (that may cause later reactivation) the service
 like this::
 
-  a2j_control --exit
+  a2j_control exit
 
 You can query the bridge status using this command::
 
-  a2j_control --status
+  a2j_control status
 
 There also methods (and corresponding a2j_control commands) that can
-be used to query mapping information::
+be used to query mapping information, ivoke without parameters to see help text::
 
-  a2j_control --help
+  a2j_control
 
 The *a2jmidid* implementation is based on *jack-alsamidi-0.5*, which is
 (almost) identical to the jackd |alsa| *seq* MIDI backend), both created by
