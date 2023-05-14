@@ -1,0 +1,98 @@
+body
+{
+  margin: 5px 5px 5px 5px;
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 12pt;
+  background-color: #C0C0C0;
+}
+
+img
+{
+  border:0;
+}
+
+table
+{
+  text-decoration:none;
+  border-collapse: collapse;
+  border-color: #4F6F4C;
+  border-style: solid;
+  border-width: 1px;
+  margin: 5px 5px 5px 5px;
+}
+
+td
+{ 
+  text-align: center;
+  border-color: #4F6F4C;
+  border-style: solid;
+  border-width: 1px;
+  background-color: #B8B8B8;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+table.screenshot
+{
+  width: 0;
+  border-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td.screenshot
+{
+  border-width: 0;
+}
+
+table.screenshots
+{
+  width: 0;
+  border-width: 0;
+}
+
+td.screenshots
+{ 
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+span.emailaddress
+{
+  font-weight: bold;
+  border-color: #4F6F4C;
+  border-style: solid;
+  border-width: 1px;
+  padding: 2px;
+}
+
+pre
+{
+  font-family: terminus, monospace;
+  background-color: #B8B8B8;
+  border-color: #4F6F4C;
+  border-style: solid;
+  border-width: 1px;
+  padding-left: 3pt;
+}
+
+/*
+     FILE ARCHIVED ON 09:28:48 Jan 15, 2017 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 08:14:10 May 14, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 195.322
+  exclusion.robots: 0.127
+  exclusion.robots.policy: 0.115
+  cdx.remote: 0.069
+  esindex: 0.009
+  LoadShardBlock: 157.157 (3)
+  PetaboxLoader3.datanode: 109.692 (5)
+  PetaboxLoader3.resolve: 111.107 (4)
+  load_resource: 130.747 (2)
+*/
