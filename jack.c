@@ -62,9 +62,11 @@ a2j_process_incoming (
   jack_nframes_t nframes)
 {
   struct a2j_alsa_midi_event ev;
-  jack_nframes_t now;
+  //jack_nframes_t now;
   jack_nframes_t one_period;
   char *ev_buf;
+
+  ((void)(nframes));            /* unreferenced parameter */
 
   /* grab data queued by the ALSA input thread and write it into the JACK
      port buffer. it will delivered during the JACK period that this
@@ -78,7 +80,7 @@ a2j_process_incoming (
 
   jack_midi_clear_buffer (port->jack_buf);
 
-  now = jack_frame_time (self->jack_client);
+  /* now =  */jack_frame_time (self->jack_client);
   one_period = jack_get_buffer_size (self->jack_client);
 
   while (jack_ringbuffer_peek (port->inbound_events, (char*)&ev, sizeof(ev) ) == sizeof(ev) ) {
@@ -241,7 +243,7 @@ a2j_process_outgoing (
   int nevents;
   jack_ringbuffer_data_t vec[2];
   int i;
-  int written = 0;
+  size_t written = 0;
   size_t limit;
   struct a2j_delivery_event* dev;
   size_t gap = 0;
@@ -324,7 +326,7 @@ void * a2j_alsa_output_thread(void * arg)
   struct a2j_delivery_event* ev;
   float sr;
   jack_nframes_t now;
-  int err;
+  //int err;
   int limit;
 
   while (g_keep_alsa_walking) {
@@ -412,7 +414,7 @@ void * a2j_alsa_output_thread(void * arg)
       }
       
       /* its time to deliver */
-      err = snd_seq_event_output(self->seq, &alsa_event);
+      /* err =  */snd_seq_event_output(self->seq, &alsa_event);
       snd_seq_drain_output (self->seq);
       now = jack_frame_time (self->jack_client);
       a2j_debug("alsa_out: written %d bytes to %s at %d, DELTA = %d", ev->jack_event.size, ev->port->name, now, 
@@ -582,6 +584,7 @@ a2j_jack_freewheel(
   int starting,
   void * arg)
 {
+  ((void)(arg));                /* unreferenced parameter */
   g_freewheeling = starting;
 }
 
@@ -590,6 +593,7 @@ void
 a2j_jack_shutdown(
   void * arg)
 {
+  ((void)(arg));                /* unreferenced parameter */
   a2j_warning("JACK server shutdown notification received.");
   g_stop_request = true;
 }

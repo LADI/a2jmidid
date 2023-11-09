@@ -24,9 +24,9 @@
 extern struct a2j_dbus_interface_descriptor g_a2j_iface_control;
 
 void
-a2j_dbus_signal_emit_bridge_started();
+a2j_dbus_signal_emit_bridge_started(void);
 
 void
-a2j_dbus_signal_emit_bridge_stopped();
+a2j_dbus_signal_emit_bridge_stopped(void);
 
 #endif /* #ifndef DBUS_IFACE_CONTROL_H__4CC2B789_43D9_4A3F_9518_E38D517F1C4B__INCLUDED */

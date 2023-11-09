@@ -68,7 +68,7 @@ int init_alsa(const char * client_name);
 int init_jack(const char * client_name);
 void sigint_handler(int i);
 int jack_callback(jack_nframes_t nframes, void *arg);
-void output_event();
+void output_event(void);
 
 
 int main(int argc, char **argv) {
@@ -186,6 +186,7 @@ int init_jack(const char * client_name) {
 
 /* This is just so we can clean up if the user presses Ctrl-C in the shell */
 void sigint_handler(int i) {
+  ((void)(i));                  /* unreferenced parameter */
   keep_running = 0;
 }
 
@@ -224,7 +225,7 @@ int jack_callback(jack_nframes_t nframes, void *arg) {
 }
 
 	
-void output_event() {
+void output_event(void) {
   size_t event_size;
   static char event_buffer[1024];
   snd_seq_event_t alsa_event;

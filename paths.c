@@ -149,7 +149,7 @@ exit:
 }
 
 bool
-a2j_paths_init()
+a2j_paths_init(void)
 {
 	const char * home_dir;
 
@@ -182,7 +182,7 @@ exit:
 }
 
 void
-a2j_paths_uninit()
+a2j_paths_uninit(void)
 {
   if (g_a2j_conf_path != NULL)
   {

@@ -236,6 +236,8 @@ a2j_dbus_message_handler_unregister(
     DBusConnection *connection,
     void *data)
 {
+    ((void)(connection));       /* unreferenced parameter */
+    ((void)(data));             /* unreferenced parameter */
     a2j_debug("Message handler was unregistered");
 }
 
@@ -278,22 +280,20 @@ struct a2j_dbus_interface_descriptor * g_a2j_dbus_interfaces[] =
 };
 
 bool
-a2j_dbus_is_available()
+a2j_dbus_is_available(void)
 {
   return g_dbus_connection_ptr != NULL;
 }
 
 bool
-a2j_dbus_init()
+a2j_dbus_init(void)
 {
 	DBusError dbus_error;
   int ret;
-    DBusObjectPathVTable vtable =
-    {
-        a2j_dbus_message_handler_unregister,
-        a2j_dbus_message_handler,
-        NULL
-    };
+  DBusObjectPathVTable vtable = {
+    .unregister_function = a2j_dbus_message_handler_unregister,
+    .message_function = a2j_dbus_message_handler
+  };
 
 	dbus_error_init(&dbus_error);
   g_dbus_connection_ptr = dbus_bus_get(DBUS_BUS_SESSION, &dbus_error);
@@ -352,7 +352,7 @@ a2j_dbus_run(
 }
 
 void
-a2j_dbus_uninit()
+a2j_dbus_uninit(void)
 {
   dbus_connection_unref(g_dbus_connection_ptr);
   g_dbus_connection_ptr = NULL;

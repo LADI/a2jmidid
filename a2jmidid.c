@@ -76,6 +76,7 @@ void
 a2j_sigint_handler(
   int i)
 {
+  ((void)(i));         /* unreferenced parameter */
   g_keep_walking = false;
 }
 
@@ -104,6 +105,7 @@ void
 a2j_stream_attach(
   struct a2j_stream * stream_ptr)
 {
+  ((void)(stream_ptr));         /* unreferenced parameter */
 }
 
 static
@@ -418,7 +420,7 @@ bool a2j_stop(void)
 }
 
 bool
-a2j_is_started()
+a2j_is_started(void)
 {
   return g_started;
 }

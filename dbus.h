@@ -22,16 +22,16 @@
 #define DBUS_H__DB007DDB_C5CF_4E9F_B73A_C3C8AC7D47DC__INCLUDED
 
 bool
-a2j_dbus_is_available();
+a2j_dbus_is_available(void);
 
 bool
-a2j_dbus_init();
+a2j_dbus_init(void);
 
 bool
 a2j_dbus_run(
   int timeout_milliseconds);
 
 void
-a2j_dbus_uninit();
+a2j_dbus_uninit(void);
 
 #endif /* #ifndef DBUS_H__DB007DDB_C5CF_4E9F_B73A_C3C8AC7D47DC__INCLUDED */

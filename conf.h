@@ -26,9 +26,9 @@ extern bool g_disable_port_uniqueness;
 extern char * g_a2j_jack_server_name;
 
 void
-a2j_conf_save();
+a2j_conf_save(void);
 
 void
-a2j_conf_load();
+a2j_conf_load(void);
 
 #endif /* #ifndef CONF_H__AE361BE4_EE60_4F5C_B2D4_13D71A525018__INCLUDED */

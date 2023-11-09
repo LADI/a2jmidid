@@ -65,7 +65,7 @@ midi_action(snd_seq_t *seq_handle)
         if (count > 0 && count < 16) {
             buffer[0] = (unsigned char)count;
             count++;
-            if (jack_ringbuffer_write(jack_ringbuffer, (char *)buffer, count) != count) {
+            if (jack_ringbuffer_write(jack_ringbuffer, (char *)buffer, count) != (jack_nframes_t)count) {
                 fprintf(stderr, "ringbuffer overflow!\n");
             }
         }
@@ -81,6 +81,8 @@ jack_callback(jack_nframes_t nframes, void *arg)
     size_t count;
     unsigned char *p;
     void* port_buf = jack_port_get_buffer(jack_midi_port, nframes);
+
+    ((void)(arg));              /* unreferenced parameter */
 
     jack_midi_clear_buffer(port_buf);
 
@@ -110,6 +112,7 @@ void
 jack_shutdown(
   void * arg)
 {
+  ((void)(arg));                /* unreferenced parameter */
   fprintf(stderr, "JACK shutdown notification received.\n");
   g_keep_walking = false;
 }
@@ -119,6 +122,7 @@ void
 sigint_handler(
   int i)
 {
+  ((void)(i));                  /* unreferenced parameter */
   g_keep_walking = false;
 }
 

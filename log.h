@@ -52,6 +52,6 @@ a2j_log_init(
   bool use_logfile);
 
 void
-a2j_log_uninit();
+a2j_log_uninit(void);
 
 #endif /* #ifndef LOG_H__76222A51_98D8_40C2_A67E_0FF38615A1DD__INCLUDED */

@@ -81,9 +81,13 @@ a2j_port_setdead(
 {
   struct a2j_port *port = a2j_port_get(hash, addr);
   if (port)
+  {
     port->is_dead = true; // see jack_process_internal
+  }
   else
+  {
     a2j_debug("port_setdead: not found (%d:%d)", addr.client, addr.port);
+  }
 }
 
 void
@@ -138,7 +142,7 @@ a2j_port_fill_name(
     if (!JACK_IS_VALID_PORT_NAME_CHAR(*c))
       *c = ' ';
 
-  if (ret < 0 || ret >= g_max_jack_port_name_size)
+  if (ret < 0 || ret >= (int)g_max_jack_port_name_size)
   {
      /* force terminating nul char because the man page does not specify whether the resulting buffer is nul terminated in this case */
     port_ptr->name[g_max_jack_port_name_size] = 0;

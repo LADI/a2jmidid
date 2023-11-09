@@ -25,9 +25,9 @@ extern char * g_a2j_log_path;
 extern char * g_a2j_conf_path;
 
 bool
-a2j_paths_init();
+a2j_paths_init(void);
 
 void
-a2j_paths_uninit();
+a2j_paths_uninit(void);
 
 #endif /* #ifndef PATHS_H__7D9E0C44_6826_464C_819D_A9A05B70E3D6__INCLUDED */

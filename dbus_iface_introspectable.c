@@ -74,10 +74,10 @@ write_line(const char * line)
   write_line_format("%s\n", line);
 }
 
-void a2j_introspect_init() __attribute__((constructor));
+void a2j_introspect_init(void) __attribute__((constructor));
 
 void
-a2j_introspect_init()
+a2j_introspect_init(void)
 {
   struct a2j_dbus_interface_descriptor ** interface_ptr_ptr;
   const struct a2j_dbus_interface_method_descriptor * method_ptr;

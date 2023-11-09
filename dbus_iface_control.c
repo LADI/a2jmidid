@@ -36,13 +36,13 @@
 #define INTERFACE_NAME "org.gna.home.a2jmidid.control"
 
 void
-a2j_dbus_signal_emit_bridge_started()
+a2j_dbus_signal_emit_bridge_started(void)
 {
   a2j_dbus_signal("/", INTERFACE_NAME, "bridge_started", DBUS_TYPE_INVALID);
 }
 
 void
-a2j_dbus_signal_emit_bridge_stopped()
+a2j_dbus_signal_emit_bridge_stopped(void)
 {
   a2j_dbus_signal("/", INTERFACE_NAME, "bridge_stopped", DBUS_TYPE_INVALID);
 }
