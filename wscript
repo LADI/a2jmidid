@@ -281,6 +281,6 @@ def build(bld):
 
     bld.install_files(os.path.join(bld.env['MANDIR'], 'man1'), man_pages)
 
-def dist_hook():
+def dist(bld):
+    os.system('./gitversion_regenerate.sh gitversion.h')
     os.remove('gitversion_regenerate.sh')
-    os.system('../gitversion_regenerate.sh gitversion.h')
