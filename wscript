@@ -8,7 +8,7 @@ import subprocess
 import shutil
 import re
 
-from waflib import Logs, Options, TaskGen, Context, Utils
+from waflib import Logs, Options, TaskGen, Context, Utils, Scripting
 from waflib.Build import BuildContext, CleanContext, InstallContext, UninstallContext
 from waftoolchainflags import WafToolchainFlags
 
@@ -26,21 +26,25 @@ def display_feature(conf, msg, build):
         conf.msg(msg, 'no', color='YELLOW')
 
 def git_ver(self):
-    bld = self.generator.bld
-    header = self.outputs[0].abspath()
-    if os.access('./gitversion.h', os.R_OK):
-        #header = os.path.join(os.getcwd(), out, "version.h")
-        shutil.copy('./gitversion.h', header)
-        data = open(header).read()
-        m = re.match(r'^#define GIT_VERSION "([^"]*)"$', data)
-        if m != None:
-            self.ver = m.group(1)
-            Logs.pprint('BLUE', "tarball from git revision " + self.ver)
-        else:
-            self.ver = "tarball"
-        return
+    if type(self) == Scripting.Dist:
+        header = "./gitversion.h"
+        bld = self
+    else:
+        bld = self.generator.bld
+        header = self.outputs[0].abspath()
+        if os.access('./gitversion.h', os.R_OK):
+            #header = os.path.join(os.getcwd(), out, "version.h")
+            shutil.copy('./gitversion.h', header)
+            data = open(header).read()
+            m = re.match(r'^#define GIT_VERSION "([^"]*)"$', data)
+            if m != None:
+                self.ver = m.group(1)
+                Logs.pprint('BLUE', "tarball from git revision " + self.ver)
+            else:
+                self.ver = "tarball"
+            return
 
-    if bld.srcnode.find_node('.git'):
+    if os.access('./.git', os.R_OK):
         self.ver = bld.cmd_and_log("LANG= git rev-parse HEAD", quiet=Context.BOTH).splitlines()[0]
         if bld.cmd_and_log("LANG= git diff-index --name-only HEAD", quiet=Context.BOTH).splitlines():
             self.ver += "-dirty"
@@ -281,6 +285,5 @@ def build(bld):
 
     bld.install_files(os.path.join(bld.env['MANDIR'], 'man1'), man_pages)
 
-def dist(bld):
-    os.system('./gitversion_regenerate.sh gitversion.h')
-    os.remove('gitversion_regenerate.sh')
+def dist(ctx):
+    git_ver(ctx)
