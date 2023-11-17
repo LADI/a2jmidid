@@ -132,7 +132,7 @@ def configure(conf):
 
     gitrev = None
     if os.access('gitversion.h', os.R_OK):
-        data = file('gitversion.h').read()
+        data = open('gitversion.h', 'r').read()
         m = re.match(r'^#define GIT_VERSION "([^"]*)"$', data)
         if m != None:
             gitrev = m.group(1)
