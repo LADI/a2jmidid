@@ -28,9 +28,9 @@ def display_feature(conf, msg, build):
 def git_ver(self):
     bld = self.generator.bld
     header = self.outputs[0].abspath()
-    if os.access('./version.h', os.R_OK):
-        header = os.path.join(os.getcwd(), out, "version.h")
-        shutil.copy('./version.h', header)
+    if os.access('./gitversion.h', os.R_OK):
+        #header = os.path.join(os.getcwd(), out, "version.h")
+        shutil.copy('./gitversion.h', header)
         data = open(header).read()
         m = re.match(r'^#define GIT_VERSION "([^"]*)"$', data)
         if m != None:
