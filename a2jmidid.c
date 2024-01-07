@@ -51,7 +51,7 @@
 #include "paths.h"
 #include "conf.h"
 #include "jack.h"
-#include "../siginfo/siginfo.h"
+#include "siginfo/siginfo.h"
 #if HAVE_GITVERSION_H
 #include "gitversion.h"
 #endif

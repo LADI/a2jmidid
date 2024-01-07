@@ -5,6 +5,7 @@ Changelog
 LADI Version 12 on 2024-01-08
 -----------------------
 * Fix meson build with when dbus support is disabled
+* a2jmidid.c: fix include of siginfo.h
 
 LADI Version 11 on 2024-01-07
 -----------------------
