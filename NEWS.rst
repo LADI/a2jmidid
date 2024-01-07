@@ -2,6 +2,11 @@
 Changelog
 =========
 
+LADI Version 11 on 2024-01-07
+-----------------------
+* Fix bunch of warnings
+* Upgrade waf to 2.0.26
+
 LADI Version 10 on 2023-11-09
 -----------------------
 * wscript: Use WafToolchainFlags
