@@ -2,6 +2,10 @@
 Changelog
 =========
 
+LADI Version 12 on 20YY-MM-DD
+-----------------------
+* Fix meson build with when dbus support is disabled
+
 LADI Version 11 on 2024-01-07
 -----------------------
 * Fix bunch of warnings

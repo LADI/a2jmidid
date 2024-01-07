@@ -31,7 +31,8 @@ src_a2jmidid = [
         'paths.c',
         #'conf.c',
         'jack.c',
-        'list.c']
+        'list.c',
+        'sigsegv.c']
 
 # config.h input
 conf_data = configuration_data()
@@ -64,8 +65,7 @@ else
   src_a2jmidid += [
     'dbus.c',
     'dbus_iface_introspectable.c',
-    'dbus_iface_control.c',
-    'sigsegv.c']
+    'dbus_iface_control.c']
   install_man('man/a2j.1')
   install_man('man/a2j_control.1')
   configure_file(
