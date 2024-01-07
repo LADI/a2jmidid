@@ -2,6 +2,12 @@
 Changelog
 =========
 
+LADI Version 10 on 2023-11-09
+-----------------------
+* wscript: Use WafToolchainFlags
+* remove "legacy" wording
+* Documentation fixes
+
 LADI Version 9.1 on 2023-05-04
 -----------------------
 * Allow bypass of the conversion of MIDI note on events with velocity 0
