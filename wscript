@@ -13,7 +13,7 @@ from waflib.Build import BuildContext, CleanContext, InstallContext, UninstallCo
 from waftoolchainflags import WafToolchainFlags
 
 APPNAME='a2jmidid'
-VERSION='11'
+VERSION='12'
 
 # these variables are mandatory ('/' are converted automatically)
 srcdir = '.'

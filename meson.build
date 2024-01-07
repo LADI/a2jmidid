@@ -8,7 +8,7 @@ project(
   ],
   meson_version: '>=0.50.0',
   license: 'GPL2+',
-  version: '9')
+  version: '12')
 
 cc = meson.get_compiler('c')
 
