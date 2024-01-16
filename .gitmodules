@@ -7,6 +7,3 @@
 [submodule "waftoolchainflags"]
 	path = waftoolchainflags
 	url = ../waf-toolchain-flags
-[submodule "autooptions"]
-	path = autooptions
-	url = ../waf-autooptions
