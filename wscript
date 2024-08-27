@@ -85,7 +85,7 @@ def options(opt):
 
     opt.add_option('--enable-pkg-config-dbus-service-dir', action='store_true', default=False, help='force D-Bus service install dir to be one returned by pkg-config')
     opt.add_option('--disable-dbus', action='store_true', default=False, help="Don't enable D-Bus support even if required dependencies are present")
-    opt.add_option('--mandir', type='string', help="Manpage directory [Default: <prefix>/share/man]")
+    opt.add_option('--mandir', help="Manpage directory [Default: <prefix>/share/man]")
 
 def configure(conf):
     conf.load('compiler_c')
