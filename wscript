@@ -73,7 +73,7 @@ def display_line(conf, text, color = 'NORMAL'):
 def options(opt):
     # options provided by the modules
     opt.load('compiler_c')
-    opt.load('autooptions')
+    opt.load('waf-autooptions')
 
     opt.add_auto_option(
         'devmode',
@@ -89,7 +89,7 @@ def options(opt):
 
 def configure(conf):
     conf.load('compiler_c')
-    conf.load('autooptions')
+    conf.load('waf-autooptions')
 
     conf.check_cfg(package='alsa', mandatory=True, args='--cflags --libs')
     conf.check_cfg(package='jack', vnum="0.109.0", mandatory=True, args='--cflags --libs')
