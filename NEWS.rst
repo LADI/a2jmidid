@@ -2,6 +2,10 @@
 Changelog
 =========
 
+LADI Version 13 on 2024-MM-DD
+-----------------------
+* Upgrade waf to 2.1.2 (newer Python3 support)
+
 LADI Version 12 on 2024-01-08
 -----------------------
 * Fix meson build with when dbus support is disabled
